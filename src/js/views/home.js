@@ -1,15 +1,19 @@
 import React from "react";
-import rigoImage from "../../img/rigo-baby.jpg";
+import TextField from "@material-ui/core/TextField";
 import "../../styles/home.scss";
 
 export const Home = () => (
-	<div className="text-center mt-5">
-		<h1>Hello Rigo!</h1>
-		<p>
-			<img src={rigoImage} />
-		</p>
-		<a href="#" className="btn btn-success">
-			If you see this green button, bootstrap is working
-		</a>
+	<div>
+		<div className="text-center mt-5">
+			<h1>Formulario de Registro de Servicio</h1>
+		</div>
+		<div className="column">
+			<a>
+				<p>Nombre de empresa</p>
+			</a>
+		</div>
+		<div className="column">
+			<TextField id="filled-basic" label="Filled" variant="filled" />
+		</div>
 	</div>
 );
