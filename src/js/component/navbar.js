@@ -23,16 +23,16 @@ export const Navbar = () => {
 				<TextField id="outlined-basic" label="Search" variant="outlined" />
 			</Grid>
 			<div className="ml-auto">
-				<Link to="/AddNewContact">
-					<ThemeProvider theme={theme}>
-						<ButtonGroup variant="text" color="primary" aria-label="text primary button group">
-							<Button>Company</Button>
-							<Button>Services</Button>
-							<Button>Log in</Button>
-							<Button>Sign up</Button>
-						</ButtonGroup>
-					</ThemeProvider>
-				</Link>
+				<ThemeProvider theme={theme}>
+					<ButtonGroup variant="text" color="primary" aria-label="text primary button group">
+						<Link to="">
+							<Button>Profile</Button>
+						</Link>
+						<Button>Services</Button>
+						<Button>Log in</Button>
+						<Button>Sign up</Button>
+					</ButtonGroup>
+				</ThemeProvider>
 			</div>
 		</nav>
 	);
