@@ -3,7 +3,7 @@ import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteRoundedIcon from "@material-ui/icons/DeleteRounded";
-import { green } from "@material-ui/core/colors";
+import { blue } from "@material-ui/core/colors";
 import CreateIcon from "@material-ui/icons/Create";
 import { Link } from "react-router-dom";
 
@@ -12,7 +12,7 @@ const Card = props => {
 	const { element, indexNuevo } = props;
 
 	return (
-		<div className="container  border1 mb-3">
+		<div className="container  border1 mb-5">
 			<div className="row pt-3 pb-2 ">
 				<div className="col-1 ml-5 pt-2 ">
 					<img
@@ -43,11 +43,11 @@ const Card = props => {
 				<div className="col-2">
 					<Link to={`/AddNewContact?id=${element.id}`}>
 						<IconButton aria-label="create">
-							<CreateIcon style={{ color: green[900] }} />
+							<CreateIcon style={{ color: blue[900] }} />
 						</IconButton>
 					</Link>
 					<IconButton aria-label="delete" onClick={() => actions.fetchDeleteContact(indexNuevo, element.id)}>
-						<DeleteRoundedIcon style={{ color: green[900] }} />
+						<DeleteRoundedIcon style={{ color: blue[900] }} />
 					</IconButton>
 				</div>
 			</div>
