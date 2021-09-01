@@ -18,16 +18,18 @@ body{
     padding-right: 0;
     padding-left: 0;
     color: white;
+    border-radius: 20px;
 }
 
 h1{
-    background: rgba(23, 165, 151, 0.768);
+    
+    background-color: rgba(23, 165, 151, 0.768);
+    border: 2px solid rgba(23, 165, 151, 0.768);
+    border-radius: 20px;
+    
     
 }
 
-p{
-    background: rgba(23, 165, 151, 0.768);
-}
 
 
 
@@ -37,7 +39,7 @@ p{
     margin-left: auto;
     margin-right: auto;
     background: rgba(23, 165, 151, 0.213);
-    
+    border-radius: 20px;
 }
 
 .probutton{
@@ -50,7 +52,7 @@ p{
     padding-top: 5px;
     padding-bottom: 10%;
     color: white;
-    background: rgba(23, 165, 151, 0.213)
-    
+    background: rgba(23, 165, 151, 0.213);
+    border-radius: 20px;
 }
 

@@ -7,6 +7,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 const CardCategories = props => {
 	const { actions } = useContext(Context);
 	const { element, indexNuevo, image } = props;
+	// eslint-disable-next-line no-console
 	console.log(element);
 
 	return (
