@@ -25,19 +25,28 @@ const Card = props => {
 					<ul>
 						<h4>{element.nombreUsr}</h4>
 						<div className="row">
-							<div className="fas fa-map-marker-alt col-1 pt-1 pl-3" />
-							<div className=" col-10 pl-1">{element.idMunicipio}</div>
-						</div>
-						<div className="row">
-							<div className="fas fa-phone col-1 pt-1" />
-							<div className=" col-10 pl-1">{element.phone}</div>
-						</div>
-						<div className="row">
 							<div className="fas fa-envelope col-1 pt-1" />
 							<div className=" col-10 pl-1">{element.correoUsr}</div>
 						</div>
+
 						<div className="row">
+							<div className="fas fa-id-card col-1 pt-1" />
+							<div className=" col-10 pl-1">{element.cedula}</div>
+						</div>
+
+						<div className="row">
+							<div className="fas fa-briefcase col-1 pt-1" />
 							<div className=" col-10 pl-1">{element.txCredenciales}</div>
+						</div>
+
+						<div className="row">
+							<div className="fas fa-birthday-cake col-1 pt-1 pl-3" />
+							<div className=" col-10 pl-1">{element.feRegistro}</div>
+						</div>
+
+						<div className="row">
+							<div className="fas fa-map-marker-alt col-1 pt-1 pl-3" />
+							<div className=" col-10 pl-1">{element.idMunicipio}</div>
 						</div>
 					</ul>
 				</div>

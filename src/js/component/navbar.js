@@ -31,9 +31,10 @@ export const Navbar = () => {
 						<Link to="/profile">
 							<Button>Profile</Button>
 						</Link>
-
+						<Link to="/registro">
+							<Button>Sign up</Button>
+						</Link>
 						<Button>Log in</Button>
-						<Button>Sign up</Button>
 					</ButtonGroup>
 				</ThemeProvider>
 			</div>
