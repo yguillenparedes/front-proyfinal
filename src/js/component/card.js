@@ -12,6 +12,7 @@ import { cloneElement } from "react";
 const Card = props => {
 	const { actions } = useContext(Context);
 	const { element, indexNuevo, image, isUsuarios } = props;
+	// eslint-disable-next-line no-console
 	console.log(element);
 
 	return (

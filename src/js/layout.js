@@ -1,12 +1,11 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-
 import { Home } from "./views/home";
 import { Professionals } from "./views/Professionals";
 import { Categories } from "./views/Categories";
+import { Usuario } from "./component/Login";
 import injectContext from "./store/appContext";
-
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { FormularioUsuario } from "./component/FormularioUsuario";
@@ -34,6 +33,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/registro">
 							<FormularioUsuario />
+						</Route>	
+						<Route exact path="/login">
+							<Usuario />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

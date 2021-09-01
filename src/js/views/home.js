@@ -16,7 +16,7 @@ export const Home = () => (
 		<div className="jumbotron text-center mt-5 col-12">
 			<h1>Profesionales al alcance de un Click</h1>
 
-			<div className="content mt-5 text-center">
+			<div className="content mt-5 text-center" style={{ backgroundColor: "rgba(23, 165, 151, 0.768)" }}>
 				<p>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
 					et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -40,7 +40,7 @@ export const Home = () => (
 			</div>
 		</div>
 		<div className="function text-center">
-			<h2 className="mb-5">¿Como Funciona?</h2>
+			<h2 className="mb-5 mt-5">¿Como Funciona?</h2>
 			<div className="container-fluid d-flex col-12 text-center">
 				<div className="col-4">
 					<Image src="Inicia-sesion.png" style={{ width: "20rem", height: "20rem" }} />
