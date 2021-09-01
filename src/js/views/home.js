@@ -44,15 +44,15 @@ export const Home = () => (
 			<div className="container-fluid d-flex col-12 text-center">
 				<div className="col-4">
 					<Image src="Inicia-sesion.png" style={{ width: "20rem", height: "20rem" }} />
-					<p>hola hola</p>
+					<p className="m-1">Registrate</p>
 				</div>
 				<div className="col-4">
 					<Image src="busca-profesional.png" style={{ width: "20rem", height: "20rem" }} />
-					<p>hola hola</p>
+					<p className="m-1">Busca el profesional que necesitas o realiza tu publicacion</p>
 				</div>
 				<div className="col-4">
 					<Image src="contrata.png" style={{ width: "20rem", height: "20rem" }} />
-					<p>hola hola</p>
+					<p className="m-1">¡Y listo! ya pueden contactarse</p>
 				</div>
 			</div>
 		</div>

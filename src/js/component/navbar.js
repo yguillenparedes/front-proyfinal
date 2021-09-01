@@ -17,20 +17,24 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-light bg-light mb-3">
 			<Link to="/">
-				<span className="navbar-brand mb-0 h1">P.A.H (Proffesionals At Home)</span>
+				<div className="navbar-brand ms-3 mb-0 h1">P.A.H (Proffesionals At Home)</div>
 			</Link>
-			<Grid borderRadius={20} container justify="center" xs={6}>
+			<Grid borderRadius={20} container justify="center" xs={2} className="m-1">
 				<TextField id="outlined-basic" label="Search" variant="outlined" />
 			</Grid>
 			<div className="ml-auto">
 				<ThemeProvider theme={theme}>
 					<ButtonGroup variant="text" color="primary" aria-label="text primary button group">
-						<Link to="">
+						<Link to="/categories/">
+							<Button>Categories</Button>
+						</Link>
+						<Link to="/profile">
 							<Button>Profile</Button>
 						</Link>
-						<Button>Services</Button>
+						<Link to="/registro">
+							<Button>Sign up</Button>
+						</Link>
 						<Button>Log in</Button>
-						<Button>Sign up</Button>
 					</ButtonGroup>
 				</ThemeProvider>
 			</div>
