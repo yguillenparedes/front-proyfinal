@@ -9,7 +9,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			usuarios: [],
 			municipios: [],
-			categorias: []
+			categorias: [],
+			currentUser:
+				localStorage.getItem("currentUser") === undefined
+					? null
+					: JSON.parse(localStorage.getItem("currentUser"))
 		},
 		actions: {
 			getUsuarios: () => {
@@ -72,6 +76,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => {
 						setStore({ categorias: data.Categorías });
 					});
+			},
+
+			setCurrentUser: user => {
+				setStore({ currentUser: user });
 			}
 		}
 	};
