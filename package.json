@@ -81,10 +81,13 @@
 		"@material-ui/icons": "^4.11.2",
 		"bootstrap": "^5.1.0",
 		"prop-types": "^15.6.1",
+		"query-string": "^7.0.1",
 		"react": "^16.8.4",
 		"react-bootstrap": "^1.6.1",
 		"react-dom": "^16.8.4",
+		"react-material-ui-form-validator": "^2.1.4",
 		"react-polyfills": "0.0.1",
-		"react-router-dom": "^5.2.0"
+		"react-router-dom": "^5.2.0",
+		"wouter": "^2.7.4"
 	}
 }

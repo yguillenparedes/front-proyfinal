@@ -4,7 +4,7 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./views/home";
 import { Professionals } from "./views/Professionals";
 import { Categories } from "./views/Categories";
-import { Usuario } from "./component/Login";
+import { Login } from "./component/Login";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -33,9 +33,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/registro">
 							<FormularioUsuario />
-						</Route>	
+						</Route>
 						<Route exact path="/login">
-							<Usuario />
+							<Login />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
