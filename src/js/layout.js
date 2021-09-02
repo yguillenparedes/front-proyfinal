@@ -38,7 +38,7 @@ const Layout = () => {
 							<Login />
 						</Route>
 						<Route>
-							<h1>Not found!</h1>
+							<h1 className="p-3">Inicia sesión para ver tu perfil!</h1>
 						</Route>
 					</Switch>
 					<Footer />
