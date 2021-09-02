@@ -1,15 +1,16 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
-export const Usuario = () => (
-	<div>
+import "../../styles/login.scss";
+
+export const Login = () => (
+	<div className="login mt-5 mb-5 pt-5 pb-5">
 		<Container component="main" maxWidth="xs">
-			<Typography component="h1" variant="h5">
+			<Typography component="h1" variant="h5" className="text-center">
 				Iniciar Sesión
 			</Typography>
 			<form>
@@ -37,9 +38,10 @@ export const Usuario = () => (
 					autoComplete="current-password"
 				/>
 
-				<Button type="submit" fullWidth variant="contained" color="primary">
-					Registrar
+				<Button type="submit" fullWidth variant="contained" color="light">
+					Ingresar
 				</Button>
+
 				<Grid container>
 					<Grid item xs>
 						<Link href="#" variant="body2">
@@ -55,7 +57,5 @@ export const Usuario = () => (
 				</Grid>
 			</form>
 		</Container>
-
-		
 	</div>
 );
