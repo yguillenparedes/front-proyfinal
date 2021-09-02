@@ -3,6 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	const urlUsuarios = "http://127.0.0.1:5000/usuarios";
 	const urlCategorias = "http://127.0.0.1:5000/categoria";
 	const urlMunicipio = "http://127.0.0.1:5000/municipios";
+	const urlLogin = "http://127.0.0.1:5000/login";
 	const urlContact = `${urlUsuarios}${USUARIO_ID}`;
 
 	return {
@@ -80,6 +81,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			setCurrentUser: user => {
 				setStore({ currentUser: user });
+			},
+			fetchLogin: async (newLogin, exito, callbackError) => {
+				const actions = getActions();
+				await fetch(urlLogin, {
+					method: "POST",
+					body: JSON.stringify(newLogin),
+					headers: {
+						"Content-Type": "application/json"
+					}
+				}).then(function(response) {
+					if (response.status === 200) {
+						actions.getUsuarios();
+						exito();
+					}
+
+					if (response.status === 400) {
+						callbackError();
+					}
+				});
 			}
 		}
 	};
