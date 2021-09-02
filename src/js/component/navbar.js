@@ -40,11 +40,10 @@ export const Navbar = () => {
 						<Link to="/registro">
 							<Button>Sign up</Button>
 						</Link>
-						<Button>Log in</Button>
+
 						<Link to="/login/">
 							<Button>Log in</Button>
 						</Link>
-						<Button>Sign up</Button>
 					</ButtonGroup>
 				</ThemeProvider>
 			</div>

@@ -53,6 +53,7 @@ export const FormularioUsuario = () => {
 	const [logUsr, setLogUsr] = useState("");
 	const [feRegistro, setFeRegistro] = useState("");
 	const [foto, setFoto] = useState("");
+	const [direccion, setDireccion] = useState("");
 
 	const [open, setOpen] = React.useState(false);
 	const { actions } = useContext(Context);
@@ -78,7 +79,8 @@ export const FormularioUsuario = () => {
 			idPlan: 1,
 			rankVendedor: 1,
 			rankComprador: 1,
-			idMunicipio: 1
+			idMunicipio: 1,
+			direccion: direccion
 		};
 
 		if (currentUsuarioid === null || currentUsuarioid === undefined) actions.fetchNewUsuario(payload, exito, error);
@@ -116,6 +118,7 @@ export const FormularioUsuario = () => {
 				setFeRegistro(data.feRegistro);
 				setClaveUsr(data.claveUsr);
 				setEdad(data.edad);
+				setDireccion(data.direccion);
 			});
 	};
 
@@ -124,6 +127,21 @@ export const FormularioUsuario = () => {
 
 		if (currentUsuarioid !== null && currentUsuarioid !== undefined) getCurrentUsuario(currentUsuarioid);
 	}, []);
+
+	const handleChangeFoto = event => {
+		const formData = new FormData();
+		formData.append("file", event.target.files[0]);
+		formData.append("upload_preset", "bz7oymlj");
+
+		const options = {
+			method: "POST",
+			body: formData
+		};
+		return fetch(`https://api.Cloudinary.com/v1_1/proyectofinal4geek/image/upload`, options)
+			.then(res => res.json())
+			.then(res => setFoto(res.secure_url))
+			.catch(err => console.log(err));
+	};
 
 	return (
 		<div className="container text-center mt-5 ">
@@ -171,6 +189,7 @@ export const FormularioUsuario = () => {
 									onChange={event => setLogUsr(event.target.value)}
 									validators={["required"]}
 									errorMessages={["this field is required"]}
+									helperText="Valor unico para cada usuario"
 								/>
 							</div>
 						</div>
@@ -210,6 +229,27 @@ export const FormularioUsuario = () => {
 									onChange={event => setEmail(event.target.value)}
 									validators={["required"]}
 									errorMessages={["this field is required"]}
+									helperText="xxxxxx@xxxx.com"
+								/>
+							</div>
+						</div>
+
+						<div className="forms row col-12">
+							<div className="col-6">
+								<a>Direccion</a>
+							</div>
+							<div className="col-6 mb-3">
+								<TextValidator
+									fullWidth
+									margin="normal"
+									label="Direccion"
+									id="outlined-size-normal"
+									variant="outlined"
+									value={direccion}
+									onChange={event => setDireccion(event.target.value)}
+									validators={["required"]}
+									helperText="Estado,Pais"
+									errorMessages={["this field is required"]}
 								/>
 							</div>
 						</div>
@@ -230,6 +270,7 @@ export const FormularioUsuario = () => {
 									onChange={event => setCedula(event.target.value)}
 									validators={["required"]}
 									errorMessages={["this field is required"]}
+									helperText="V-xxxxxx"
 								/>
 							</div>
 						</div>
@@ -292,19 +333,20 @@ export const FormularioUsuario = () => {
 									onChange={event => setPhone(event.target.value)}
 									validators={["required"]}
 									errorMessages={["this field is required"]}
+									helperText="0414-xxxxxxx"
 								/>
 							</div>
 						</div>
 
 						<div className="forms row col-12">
 							<div className="col-6">
-								<a>Credenciales</a>
+								<a>Area de trabajo</a>
 							</div>
 							<div className="col-6 mb-3">
 								<TextValidator
 									fullWidth
 									margin="normal"
-									label="Credenciales"
+									label="Area de trabajo"
 									id="outlined-size-normal"
 									type="text"
 									variant="outlined"
@@ -312,46 +354,27 @@ export const FormularioUsuario = () => {
 									onChange={event => setTxCredenciales(event.target.value)}
 									validators={["required"]}
 									errorMessages={["this field is required"]}
+									helperText="Hogar, Diseño, Arquitectura, Ingenieria, Academia, Asistencia Virtual"
 								/>
 							</div>
 						</div>
 
 						<div className="forms row col-12">
 							<div className="col-6">
-								<a>Estado</a>
-							</div>
-							<div className="col-6 mb-3 ">
-								<TextField
-									fullWidth
-									margin="normal"
-									id="outlined-select-estado"
-									select
-									label="Select"
-									variant="outlined"
-									helperText="Por favor, selecciona un Estado">
-									<MenuItem />
-								</TextField>
-							</div>
-						</div>
-
-						<div className="forms row col-12">
-							<div className="col-6">
-								<a>Municipio</a>
+								<a>Image</a>
 							</div>
 							<div className="col-6 mb-3">
-								<TextField
+								<TextValidator
 									fullWidth
 									margin="normal"
-									id="outlined-select-currency"
-									select
-									label="Select"
-									helperText="Por favor, selecciona un Municipio"
-									variant="outlined">
-									<MenuItem />
-								</TextField>
+									id="outlined-size-normal"
+									type="file"
+									variant="outlined"
+									onChange={event => handleChangeFoto(event)}
+									accept="image/*"
+								/>
 							</div>
 						</div>
-
 						<div className="register">
 							<Grid container justifyContent="center" item xs={12}>
 								<Button
