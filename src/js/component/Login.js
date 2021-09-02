@@ -1,6 +1,5 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
@@ -8,7 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
 import "../../styles/login.scss";
 
-export const Usuario = () => (
+export const Login = () => (
 	<div className="login mt-5 mb-5 pt-5 pb-5">
 		<Container component="main" maxWidth="xs">
 			<Typography component="h1" variant="h5" className="text-center">

@@ -12,8 +12,8 @@ const CardCategories = props => {
 
 	return (
 		<div className="container  border1 mb-5 bg-light">
-			<div className="row pt-3 pb-2 ">
-				<div className="col-3 ml-5 pt-2 ">
+			<div className="row pt-3 pb-2  ">
+				<div className="col-3 ml-5 pb-2 ">
 					<CardMedia component="img" alt="" height="200" width="400" image={image} title="" />
 				</div>
 
