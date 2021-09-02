@@ -23,28 +23,24 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar mb-3">
 			<Link to="/">
-				<div className="navbar-brand ms-3 mb-0 h1 dark">P.A.H (Proffesionals At Home)</div>
+				<div className="navbar-brand ms-5 mb-0 h1 dark">P.A.H (Proffesionals At Home)</div>
 			</Link>
-			<Grid borderRadius={20} container justify="center" xs={2} className="m-1">
-				<TextField id="outlined-basic" label="Search" variant="outlined" />
-			</Grid>
-			<div className="ml-auto me-3">
+			<Grid borderRadius={20} container justify="center" xs={2} className="m-1" />
+			<div className="links ml-auto me-3">
 				<ThemeProvider theme={theme}>
-					<ButtonGroup variant="text" color="light" aria-label="text primary button group">
+					<ButtonGroup variant="text" color="secondary" aria-label="text light button group">
 						<Link to="/categories/">
-							<Button>Categories</Button>
+							<Button style={{ color: "white" }}>Categories</Button>
 						</Link>
 						<Link to="/profile">
-							<Button>Profile</Button>
+							<Button style={{ color: "white" }}>Profile</Button>
 						</Link>
 						<Link to="/registro">
-							<Button>Sign up</Button>
+							<Button style={{ color: "white" }}>Sign up</Button>
 						</Link>
-						<Button>Log in</Button>
 						<Link to="/login/">
-							<Button>Log in</Button>
+							<Button style={{ color: "white" }}>Log in</Button>
 						</Link>
-						<Button>Sign up</Button>
 					</ButtonGroup>
 				</ThemeProvider>
 			</div>
