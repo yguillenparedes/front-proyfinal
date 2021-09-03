@@ -7,8 +7,6 @@ import CardMedia from "@material-ui/core/CardMedia";
 const CardCategories = props => {
 	const { actions } = useContext(Context);
 	const { element, indexNuevo, image } = props;
-	// eslint-disable-next-line no-console
-	console.log(element);
 
 	return (
 		<div className="container  border1 mb-5 bg-light">
@@ -19,7 +17,9 @@ const CardCategories = props => {
 
 				<div className="col-5 px-5 m-auto">
 					<ul>
-						<h4>{element.nombreCategoria}</h4>
+						<Link to="/serviciosactivos">
+							<h4>{element.nombreCategoria}</h4>
+						</Link>
 					</ul>
 				</div>
 			</div>
