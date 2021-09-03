@@ -84,7 +84,7 @@ export const Login = () => {
 					</ValidatorForm>
 				</Container>
 				<br />
-				<br />
+				<br />	
 			</div>
 		);
 	} else {
