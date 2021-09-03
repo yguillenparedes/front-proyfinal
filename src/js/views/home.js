@@ -1,6 +1,4 @@
-import { height } from "@material-ui/system";
 import React from "react";
-import { Card } from "react-bootstrap";
 import { Image } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -10,6 +8,7 @@ import "../../img/busca-profesional.png";
 import "../../img/contrata.png";
 import "../../styles/home.scss";
 import "../../img/jo-szczepanska-9OKGEVJiTKk-unsplash.jpg";
+import Typography from "@material-ui/core/Typography";
 
 export const Home = () => (
 	<div className="landing container-fluid">
@@ -19,7 +18,7 @@ export const Home = () => (
 			<div className="content mt-5 text-center" style={{ backgroundColor: "rgba(23, 165, 151, 0.768)" }}>
 				<p>
 					Nuestro principal objetivo es ayudarte a conseguir un profesional que se ajuste a tus necesidades y
-					si eres profesional un cliente para ti!
+					si eres profesional un cliente ¡ para ti!
 				</p>
 			</div>
 		</div>
@@ -28,7 +27,9 @@ export const Home = () => (
 				<div className="probutton">
 					<Link to="/Professionals/">
 						<Button variant="info" size="lg">
-							Estos son nuestros profesionales
+							<Typography variant="h6" style={{ color: "white" }}>
+								Estos son nuestros profesionales
+							</Typography>
 						</Button>
 					</Link>
 				</div>
@@ -39,15 +40,15 @@ export const Home = () => (
 			</div>
 		</div>
 		<div className="function text-center">
-			<h2 className="mb-5 mt-5">¿Como Funciona?</h2>
+			<h2 className="mb-5 mt-5">¿Cómo Funciona?</h2>
 			<div className="container-fluid d-flex col-12 text-center">
 				<div className="col-4">
 					<Image src="Inicia-sesion.png" style={{ width: "20rem", height: "20rem" }} />
-					<p className="m-1">Registrate</p>
+					<p className="m-1">Regístrate</p>
 				</div>
 				<div className="col-4">
 					<Image src="busca-profesional.png" style={{ width: "20rem", height: "20rem" }} />
-					<p className="m-1">Busca el profesional que necesitas o realiza tu publicacion</p>
+					<p className="m-1">Busca el profesional que necesitas o realiza tu publicación</p>
 				</div>
 				<div className="col-4">
 					<Image src="contrata.png" style={{ width: "20rem", height: "20rem" }} />

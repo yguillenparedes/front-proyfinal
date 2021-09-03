@@ -189,25 +189,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 			},
 
-			fetchEditServicios: async (newEditServicio, currentServicioid, exito, callbackError) => {
-				await fetch(urlServiciosID.replace(SERVICIO_ID, currentServicioid), {
-					method: "PUT",
-					body: JSON.stringify(newEditServicio),
-					headers: {
-						"Content-Type": "application/json"
-					}
-				}).then(function(response) {
-					if (response.status === 200) {
-						getActions().getServicios();
-						exito();
-					}
-
-					if (response.status === 400) {
-						callbackError();
-					}
-				});
-			},
-
 			fetchEditServiciosUser: async (newEditServicioUser, currentServicioidUser, exito, callbackError) => {
 				const actions = getActions();
 				await fetch(urlServiciosID.replace(SERVICIO_ID, currentServicioidUser), {

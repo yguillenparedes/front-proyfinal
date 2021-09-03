@@ -1,21 +1,13 @@
 import React, { useContext } from "react";
 import "../../styles/navbar.scss";
 import { Link } from "react-router-dom";
-import { createTheme, ThemeProvider } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+import { createTheme } from "@material-ui/core/styles";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import { Context } from "../store/appContext";
-
-const theme = createTheme({
-	palette: {
-		primary: {
-			main: "#fafafa"
-		},
-		secondary: {
-			main: "#fafafa"
-		}
-	}
-});
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
 
 export const Navbar = () => {
 	const { store } = useContext(Context);
@@ -35,36 +27,53 @@ export const Navbar = () => {
 	};
 
 	return (
-		<nav className="navbar mb-3">
-			<div className="ms-3">
-				<Link to="/">
-					<div className="navbar-brand ms-3 mb-0 h1 text-dark">P.A.H (Proffesionals At Home)</div>
-				</Link>
-			</div>
-			<div className="ml-auto me-3 ">
-				<ThemeProvider theme={theme}>
+		<>
+			<AppBar position="static" style={{ backgroundColor: "rgba(23, 165, 151, 0.768)" }}>
+				<Toolbar>
+					<Link to="/" style={{ textDecoration: "none" }}>
+						<Typography variant="h6" style={{ color: "white" }}>
+							P.A.H (Proffesionals At Home)
+						</Typography>
+					</Link>
+					<div style={{ flexGrow: 1 }} />
 					<ButtonGroup variant="text" color="light" aria-label="text primary button group">
 						{!isEmpty() && (
 							<>
-								<Link to="/categories/">
-									<Button>Categories</Button>
+								<Link to="/categories/" style={{ textDecoration: "none" }}>
+									<Button>
+										<Typography variant="subtitle" style={{ color: "white" }}>
+											Categories
+										</Typography>
+									</Button>
 								</Link>
 
-								<Link to="/perfil">
-									<Button>Profile</Button>
+								<Link to="/perfil" style={{ textDecoration: "none" }}>
+									<Button>
+										<Typography variant="subtitle" style={{ color: "white" }}>
+											Profile
+										</Typography>
+									</Button>
 								</Link>
 							</>
 						)}
 						{isEmpty() && (
-							<Link to="/registro">
-								<Button>Sign up</Button>
+							<Link to="/registro" style={{ textDecoration: "none" }}>
+								<Button>
+									<Typography variant="subtitle" style={{ color: "white" }}>
+										Sign up
+									</Typography>
+								</Button>
 							</Link>
 						)}
 
-						<Button onClick={isEmpty() ? goToLogin : logOut}>{isEmpty() ? "Log in" : "Log out"}</Button>
+						<Button onClick={isEmpty() ? goToLogin : logOut}>
+							<Typography variant="subtitle" style={{ color: "white" }}>
+								{isEmpty() ? "Log in" : "Log out"}
+							</Typography>
+						</Button>
 					</ButtonGroup>
-				</ThemeProvider>
-			</div>
-		</nav>
+				</Toolbar>
+			</AppBar>
+		</>
 	);
 };

@@ -12,6 +12,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormGroup from "@material-ui/core/FormGroup";
 import Select from "@material-ui/core/Select";
+import Typography from "@material-ui/core/Typography";
 
 const servicio_id = "SERVICIO_ID";
 const urlServicios = "http://127.0.0.1:5000/servicios/";
@@ -19,12 +20,12 @@ const urlServiciosID = `${urlServicios}${servicio_id}`;
 
 const MESSAGE_ERROR = {
 	title: "Tienes un problema",
-	description: `Tu correo está siendo usado`
+	description: `Lo sentimos, tu servicio tiene un error, vuelve a intentarlo`
 };
 
 const MESSAGE_SUCCESS = {
 	title: "Correcto!",
-	description: `Has sido registrado con éxito!`
+	description: `Tu servicio ha sido creado con éxito!`
 };
 
 const MESSAGE_SUCCESS_EDIT = {
@@ -138,16 +139,26 @@ export const FormularioServicio = () => {
 			<Container>
 				<ValidatorForm noValidate autoComplete="off" onSubmit={enviarDatos}>
 					<div ClassName="row">
-						<div ClassName="col">
-							<h1>Formulario de Registro de Servicios</h1>
+						<div
+							className="mb-5 p-3 text-center"
+							style={{
+								boxShadow:
+									"rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 3px 0px, rgb(0 0 0 / 12%) 0px 1px 1px 0px",
+								marginBottom: 50,
+								backgroundColor: "rgba(23, 165, 151, 0.768)",
+								borderRadius: 4
+							}}>
+							<Typography variant="h3" style={{ color: "white" }}>
+								Formulario de registro de servicios
+							</Typography>
 						</div>
 					</div>
 
 					<div className="bg-light pt-5 pb-5">
 						<div className="forms row col-12">
-							<div className="col-6">
-								<a>Nombre Categoria</a>
-							</div>
+							<Grid container item xs={6} justifyContent="center" alignItems="center">
+								Nombre Categoria
+							</Grid>
 							<div className="col-6 mb-3">
 								<Select
 									fullWidth
@@ -181,9 +192,9 @@ export const FormularioServicio = () => {
 						</div>
 
 						<div className="forms row col-12 ">
-							<div className="col-6">
-								<a>Nombre Servicio</a>
-							</div>
+							<Grid container item xs={6} justifyContent="center" alignItems="center">
+								Nombre Servicio
+							</Grid>
 							<div className="col-6 mb-3">
 								<TextValidator
 									fullWidth
@@ -200,9 +211,9 @@ export const FormularioServicio = () => {
 						</div>
 
 						<div className="forms row col-12">
-							<div className="col-6">
-								<a>Descripcion</a>
-							</div>
+							<Grid container item xs={6} justifyContent="center" alignItems="center">
+								Descripcion
+							</Grid>
 							<div className="col-6 mb-3">
 								<TextValidator
 									fullWidth
@@ -220,9 +231,9 @@ export const FormularioServicio = () => {
 						</div>
 
 						<div className="forms row col-12">
-							<div className="col-6">
-								<a>Palabras claves</a>
-							</div>
+							<Grid container item xs={6} justifyContent="center" alignItems="center">
+								Palabras claves
+							</Grid>
 							<div className="col-6 mb-3">
 								<TextValidator
 									fullWidth
@@ -239,9 +250,9 @@ export const FormularioServicio = () => {
 						</div>
 
 						<div className="forms row col-12">
-							<div className="col-6">
-								<a>En Domicilio</a>
-							</div>
+							<Grid container item xs={6} justifyContent="center" alignItems="center">
+								En Domicilio
+							</Grid>
 							<div className="col-6 mb-3">
 								<FormGroup row>
 									<FormControlLabel
@@ -260,9 +271,9 @@ export const FormularioServicio = () => {
 						</div>
 
 						<div className="forms row col-12">
-							<div className="col-6">
-								<a>Fecha de Publicación</a>
-							</div>
+							<Grid container item xs={6} justifyContent="center" alignItems="center">
+								Fecha de Publicación
+							</Grid>
 							<div className="col-6 mb-3">
 								<TextValidator
 									fullWidth
@@ -280,9 +291,9 @@ export const FormularioServicio = () => {
 						</div>
 
 						<div className="forms row col-12">
-							<div className="col-6">
-								<a>Estado de servicio</a>
-							</div>
+							<Grid container item xs={6} justifyContent="center" alignItems="center">
+								Estado de servicio
+							</Grid>
 							<div className="col-6 mb-3">
 								<Select
 									fullWidth
@@ -308,9 +319,9 @@ export const FormularioServicio = () => {
 						</div>
 
 						<div className="forms row col-12">
-							<div className="col-6">
-								<a>Credenciales</a>
-							</div>
+							<Grid container item xs={6} justifyContent="center" alignItems="center">
+								Credenciales
+							</Grid>
 							<div className="col-6 mb-3">
 								<TextValidator
 									fullWidth
@@ -331,9 +342,9 @@ export const FormularioServicio = () => {
 						</div>
 
 						<div className="forms row col-12">
-							<div className="col-6">
-								<a>Image</a>
-							</div>
+							<Grid container item xs={6} justifyContent="center" alignItems="center">
+								Image
+							</Grid>
 							<div className="col-6 mb-3">
 								<TextValidator
 									fullWidth
