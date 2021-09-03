@@ -7,8 +7,8 @@ export const Categories = () => {
 	const { currentUser } = store;
 
 	return (
-		<div className="container text-primary p-5">
-			<h2 className="mb-5"> Estas son nuestras categorias</h2>
+		<div className="container text-primary p-5 ">
+			<h2 className="mb-5 bg-light p-3"> Estas son nuestras categorias</h2>
 			<div>
 				{store.categorias.map((categories, index) => {
 					return (

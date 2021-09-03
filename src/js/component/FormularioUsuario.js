@@ -142,7 +142,7 @@ export const FormularioUsuario = () => {
 	};
 
 	return (
-		<div className="container text-center mt-5 ">
+		<div className="container text-center my-5 ">
 			<Modal open={open} handleClose={handleClose} message={message} />
 			<Container>
 				<ValidatorForm noValidate autoComplete="off" onSubmit={enviarDatos}>
