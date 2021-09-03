@@ -1,19 +1,17 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./views/home";
 import { Professionals } from "./views/Professionals";
+import { FormularioUsuario } from "./component/FormularioUsuario";
 import { Categories } from "./views/Categories";
 import { Login } from "./component/Login";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-import { FormularioUsuario } from "./component/FormularioUsuario";
+import Routes from "./Routes";
 
-//create your first component
 const Layout = () => {
-	//the basename is used when your project is published in a subdirectory and not in the root of the domain
-	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
 
 	return (
@@ -41,6 +39,7 @@ const Layout = () => {
 							<h1 className="p-3">Inicia sesión para ver tu perfil!</h1>
 						</Route>
 					</Switch>
+					<Routes />
 					<Footer />
 				</ScrollToTop>
 			</BrowserRouter>
