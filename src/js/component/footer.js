@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../../styles/footer.scss";
+import "../../img/logo-4geeks.png";
 
 export const Footer = () => (
 	<footer className="footer mt-auto pt-3 col-12 d-flex text-center">
@@ -9,6 +10,8 @@ export const Footer = () => (
 				Made with <i className="fa fa-heart text-danger" /> by A.D.J.Y
 			</p>
 		</div>
-		<div className="col-4">iconos</div>
+		<div className="col-4">
+			<img src="logo-4geeks.png" />
+		</div>
 	</footer>
 );
