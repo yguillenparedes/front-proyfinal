@@ -27,10 +27,10 @@ export const Login = () => {
 		return (
 			<div className="login mt-5 mb-5 pt-5 pb-5">
 				<Container component="main" maxWidth="xs">
-					<Typography component="h1" variant="h5" className="text-center">
+					<Typography component="h1" variant="h5" className="text-center ">
 						Iniciar Sesión
 					</Typography>
-					<ValidatorForm noValidate autoComplete="off" onSubmit={login}>
+					<ValidatorForm noValidate autoComplete="off" onSubmit={login} className="bg-light p-3 m-3">
 						<TextValidator
 							variant="outlined"
 							margin="normal"
@@ -62,13 +62,13 @@ export const Login = () => {
 							value={password}
 						/>
 
-						<Button type="submit" fullWidth variant="contained" color="light">
+						<Button type="submit" fullWidth variant="contained" color="primary">
 							Ingresar
 						</Button>
 
 						<Grid container>
 							<Grid item xs>
-								<Link href="/contrasenaolvidada" variant="body2">
+								<Link href="/contrasena-olvidada" variant="body2">
 									¿Olvidaste la contraseña?
 								</Link>
 							</Grid>

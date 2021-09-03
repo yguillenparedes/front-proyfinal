@@ -9,7 +9,7 @@ import { FormularioUsuario } from "./component/FormularioUsuario";
 import { FormularioServicio } from "./component/FormularioServicio";
 import { NotAccess } from "./views/NotAccess";
 import { Servicios } from "./views/Servicios";
-import { Olvidarcontrasena } from "./component/OlvidarContrasena";
+import { OlvidarContrasena } from "./component/OlvidarContrasena";
 
 const Routes = () => {
 	return (
@@ -48,8 +48,8 @@ const Routes = () => {
 					<Servicios />
 				</NotAccess>
 			</Route>
-			<Route exact path="/contrasenaolvidada">
-				<Olvidarcontrasena />
+			<Route exact path="/contrasena-olvidada">
+				<OlvidarContrasena />
 			</Route>
 			<Route>
 				<h1 className="p-3">Pagina no encontrada</h1>

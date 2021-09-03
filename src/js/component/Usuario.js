@@ -35,7 +35,7 @@ const Usuario = props => {
 	return (
 		<Grid container item xs={12} style={{ paddingBottom: 50 }}>
 			<div className="landing container-fluid">
-				<CardMaterial style={{ marginBottom: 20 }}>
+				<CardMaterial style={{ marginBottom: 20, marginTop: 20 }}>
 					<CardContent>
 						<Grid container item xs={12} spacing={2}>
 							<Grid container item xs={4} justifyContent="center" alignItems="center">
@@ -68,7 +68,9 @@ const Usuario = props => {
 							<Grid container item xs={4} justifyContent="center" alignItems="center">
 								<Link to="/servicios">
 									<Button variant="info" size="lg">
-										Añadir servicio
+										<Typography
+											style={{ color: "white" }}
+											variant={"h6"}>{`Añadir servicio`}</Typography>
 									</Button>
 								</Link>
 							</Grid>

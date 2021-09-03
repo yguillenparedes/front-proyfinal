@@ -9,6 +9,7 @@ import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import SaveIcon from "@material-ui/icons/Save";
+import Typography from "@material-ui/core/Typography";
 
 const USUARIO_ID = "USUARIO_ID";
 const urlUsuarios = "http://127.0.0.1:5000/usuarios";
@@ -28,17 +29,6 @@ const MESSAGE_SUCCESS_EDIT = {
 	title: "Correcto!",
 	description: `Tu Usuario fue modificado!`
 };
-const useStyles = makeStyles(theme => ({
-	root: {
-		display: "flex",
-		flexWrap: "wrap"
-	},
-	textField: {
-		marginLeft: theme.spacing(1),
-		marginRight: theme.spacing(1),
-		width: "25ch"
-	}
-}));
 
 export const FormularioUsuario = () => {
 	const [name, setName] = useState("");
@@ -147,15 +137,25 @@ export const FormularioUsuario = () => {
 			<Container>
 				<ValidatorForm noValidate autoComplete="off" onSubmit={enviarDatos}>
 					<div ClassName="row">
-						<div ClassName="col">
-							<h1>Formulario de Registro de Usuario</h1>
+						<div
+							className="mb-5 p-3 text-center"
+							style={{
+								boxShadow:
+									"rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 3px 0px, rgb(0 0 0 / 12%) 0px 1px 1px 0px",
+								marginBottom: 50,
+								backgroundColor: "rgba(23, 165, 151, 0.768)",
+								borderRadius: 4
+							}}>
+							<Typography variant="h3" style={{ color: "white" }}>
+								Formulario de registro de usuario
+							</Typography>
 						</div>
 					</div>
 					<div className="bg-light pt-5 pb-5">
 						<div className="forms row col-12 ">
-							<div className="col-6">
-								<a>Nombre Completo</a>
-							</div>
+							<Grid container item xs={6} justifyContent="center" alignItems="center">
+								Nombre Completo
+							</Grid>
 							<div className="col-6 mb-3">
 								<TextValidator
 									fullWidth
@@ -172,9 +172,9 @@ export const FormularioUsuario = () => {
 						</div>
 
 						<div className="forms row col-12">
-							<div className="col-6">
-								<a>Nombre de Usuario</a>
-							</div>
+							<Grid container item xs={6} justifyContent="center" alignItems="center">
+								Nombre de Usuario
+							</Grid>
 							<div className="col-6 mb-3">
 								<TextValidator
 									fullWidth
@@ -193,9 +193,9 @@ export const FormularioUsuario = () => {
 						</div>
 
 						<div className="forms row col-12">
-							<div className="col-6">
-								<a>Clave de Usuario</a>
-							</div>
+							<Grid container item xs={6} justifyContent="center" alignItems="center">
+								Clave de Usuario
+							</Grid>
 							<div className="col-6 mb-3">
 								<TextValidator
 									fullWidth
@@ -213,9 +213,9 @@ export const FormularioUsuario = () => {
 						</div>
 
 						<div className="forms row col-12">
-							<div className="col-6">
-								<a>Email</a>
-							</div>
+							<Grid container item xs={6} justifyContent="center" alignItems="center">
+								Email
+							</Grid>
 							<div className="col-6 mb-3">
 								<TextValidator
 									fullWidth
@@ -233,9 +233,9 @@ export const FormularioUsuario = () => {
 						</div>
 
 						<div className="forms row col-12">
-							<div className="col-6">
-								<a>Direccion</a>
-							</div>
+							<Grid container item xs={6} justifyContent="center" alignItems="center">
+								Direccion
+							</Grid>
 							<div className="col-6 mb-3">
 								<TextValidator
 									fullWidth
@@ -253,9 +253,9 @@ export const FormularioUsuario = () => {
 						</div>
 
 						<div className="forms row col-12">
-							<div className="col-6">
-								<a>Cédula</a>
-							</div>
+							<Grid container item xs={6} justifyContent="center" alignItems="center">
+								Cédula
+							</Grid>
 							<div className="col-6 mb-3">
 								<TextValidator
 									fullWidth
@@ -274,9 +274,9 @@ export const FormularioUsuario = () => {
 						</div>
 
 						<div className="forms row col-12">
-							<div className="col-6">
-								<a>Edad</a>
-							</div>
+							<Grid container item xs={6} justifyContent="center" alignItems="center">
+								Edad
+							</Grid>
 							<div className="col-6 mb-3">
 								<TextValidator
 									fullWidth
@@ -296,9 +296,9 @@ export const FormularioUsuario = () => {
 						</div>
 
 						<div className="forms row col-12">
-							<div className="col-6">
-								<a>Fecha de Nacimiento</a>
-							</div>
+							<Grid container item xs={6} justifyContent="center" alignItems="center">
+								Fecha de Nacimiento
+							</Grid>
 							<div className="col-6 mb-3">
 								<TextValidator
 									fullWidth
@@ -316,9 +316,9 @@ export const FormularioUsuario = () => {
 						</div>
 
 						<div className="forms row col-12">
-							<div className="col-6">
-								<a>Telefono</a>
-							</div>
+							<Grid container item xs={6} justifyContent="center" alignItems="center">
+								Telefono
+							</Grid>
 							<div className="col-6 mb-3">
 								<TextValidator
 									fullWidth
@@ -337,9 +337,9 @@ export const FormularioUsuario = () => {
 						</div>
 
 						<div className="forms row col-12">
-							<div className="col-6">
-								<a>Area de trabajo</a>
-							</div>
+							<Grid container item xs={6} justifyContent="center" alignItems="center">
+								Area de trabajo
+							</Grid>
 							<div className="col-6 mb-3">
 								<TextValidator
 									fullWidth
@@ -358,9 +358,9 @@ export const FormularioUsuario = () => {
 						</div>
 
 						<div className="forms row col-12">
-							<div className="col-6">
-								<a>Image</a>
-							</div>
+							<Grid container item xs={6} justifyContent="center" alignItems="center">
+								Image
+							</Grid>
 							<div className="col-6 mb-3">
 								<TextValidator
 									fullWidth
