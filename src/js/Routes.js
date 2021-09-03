@@ -4,9 +4,11 @@ import { Home } from "./views/home";
 import { Professionals } from "./views/Professionals";
 import { Categories } from "./views/Categories";
 import { Login } from "./component/Login";
-import { Usuario } from "./component/Usuario";
+import Usuario from "./component/Usuario";
 import { FormularioUsuario } from "./component/FormularioUsuario";
+import { FormularioServicio } from "./component/FormularioServicio";
 import { NotAccess } from "./views/NotAccess";
+import { Servicios } from "./views/Servicios";
 
 const Routes = () => {
 	return (
@@ -33,6 +35,16 @@ const Routes = () => {
 			<Route exact path="/perfil">
 				<NotAccess>
 					<Usuario />
+				</NotAccess>
+			</Route>
+			<Route exact path="/servicios">
+				<NotAccess>
+					<FormularioServicio />
+				</NotAccess>
+			</Route>
+			<Route exact path="/serviciosactivos">
+				<NotAccess>
+					<Servicios />
 				</NotAccess>
 			</Route>
 			<Route>

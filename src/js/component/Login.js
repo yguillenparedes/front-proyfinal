@@ -76,13 +76,15 @@ export const Login = () => {
 							</Grid>
 
 							<Grid item>
-								<Link href="#" variant="body2">
+								<Link href="/registro" variant="body2">
 									¿No tienes cuenta?
 								</Link>
 							</Grid>
 						</Grid>
 					</ValidatorForm>
 				</Container>
+				<br />
+				<br />
 			</div>
 		);
 	} else {
