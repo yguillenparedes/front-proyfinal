@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import CardCategories from "../component/CardCategories";
 import { Context } from "../store/appContext";
+import Grid from "@material-ui/core/Grid";
 
 export const Categories = () => {
 	const { store } = useContext(Context);

@@ -1,29 +1,32 @@
-import React, { useContext } from "react";
-import { Context } from "../store/appContext";
+import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import CardMedia from "@material-ui/core/CardMedia";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import Grid from "@material-ui/core/Grid";
 
 const CardCategories = props => {
-	const { actions } = useContext(Context);
-	const { element, indexNuevo, image } = props;
+	const { element } = props;
 
 	return (
-		<div className="container  border1 mb-5 bg-light">
-			<div className="row pt-3 pb-2  ">
-				<div className="col-3 ml-5 pt-2 pb-3 ">
-					<CardMedia component="img" alt="" height="300" width="300" image={element.foto} title="" />
-				</div>
+		<Card style={{ marginBottom: 20 }}>
+			<CardContent>
+				<Grid container item xs={12}>
+					<Grid container item xs={4}>
+						<CardMedia component="img" alt="" height="100%" width="100%" image={element.foto} title="" />
+					</Grid>
 
-				<div className="col-5 px-5 m-auto">
-					<ul>
-						<Link to="/serviciosactivos">
-							<h4>{element.nombreCategoria}</h4>
-						</Link>
-					</ul>
-				</div>
-			</div>
-		</div>
+					<Grid container item xs={8}>
+						<ul>
+							<Link to={`/servicios-category?id=${element.id}`}>
+								<h4>{element.nombreCategoria}</h4>
+							</Link>
+						</ul>
+					</Grid>
+				</Grid>
+			</CardContent>
+		</Card>
 	);
 };
 

@@ -9,6 +9,7 @@ import { FormularioUsuario } from "./component/FormularioUsuario";
 import { FormularioServicio } from "./component/FormularioServicio";
 import { NotAccess } from "./views/NotAccess";
 import { Servicios } from "./views/Servicios";
+import { Olvidarcontrasena } from "./component/OlvidarContrasena";
 
 const Routes = () => {
 	return (
@@ -42,10 +43,13 @@ const Routes = () => {
 					<FormularioServicio />
 				</NotAccess>
 			</Route>
-			<Route exact path="/serviciosactivos">
+			<Route exact path="/servicios-category">
 				<NotAccess>
 					<Servicios />
 				</NotAccess>
+			</Route>
+			<Route exact path="/contrasenaolvidada">
+				<Olvidarcontrasena />
 			</Route>
 			<Route>
 				<h1 className="p-3">Pagina no encontrada</h1>

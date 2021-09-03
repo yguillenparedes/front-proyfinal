@@ -18,9 +18,8 @@ export const Home = () => (
 
 			<div className="content mt-5 text-center" style={{ backgroundColor: "rgba(23, 165, 151, 0.768)" }}>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-					et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-					aliquip ex ea commodo consequat.
+					Nuestro principal objetivo es ayudarte a conseguir un profesional que se ajuste a tus necesidades y
+					si eres profesional un cliente para ti!
 				</p>
 			</div>
 		</div>

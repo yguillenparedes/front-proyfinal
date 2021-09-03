@@ -36,6 +36,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ usuarios: data.usuarios });
 					});
 			},
+
 			fetchNewUsuario: async (newUsuario, exito, callbackError) => {
 				const actions = getActions();
 				await fetch(urlUsuarios, {
@@ -57,7 +58,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			fetchEditUsuario: async (newEditusuario, currentUsuarioid, exito, callbackError) => {
-				const actions = getActions();
 				await fetch(urlContact.replace(USUARIO_ID, currentUsuarioid), {
 					method: "PUT",
 					body: JSON.stringify(newEditusuario),
@@ -75,6 +75,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				});
 			},
+
 			getMunicipios: () => {
 				fetch(urlMunicipio)
 					.then(respuesta => respuesta.json())
@@ -94,7 +95,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			setCurrentUser: user => {
 				setStore({ currentUser: user });
 			},
-			fetchLogin: async (newLogin, exito, callbackError) => {
+
+			getCurrentUser: async newLogin => {
 				const actions = getActions();
 				await fetch(urlLogin, {
 					method: "POST",
@@ -102,17 +104,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 					headers: {
 						"Content-Type": "application/json"
 					}
-				}).then(function(response) {
-					if (response.status === 200) {
-						actions.getUsuarios();
-						exito();
-					}
+				})
+					.then(respuesta => respuesta.json())
+					.then(data => {
+						let user = data.Usuario;
 
-					if (response.status === 400) {
-						callbackError();
-					}
-				});
+						if (Object.entries(user).length !== 0) {
+							actions.setCurrentUser(user);
+							localStorage.setItem("currentUser", JSON.stringify(user));
+							window.location.replace("/");
+						}
+					});
 			},
+
 			getServicios: () => {
 				fetch(urlServicios)
 					.then(respuesta => respuesta.json())
@@ -130,17 +134,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getServiciosIDUser: currentServicioidUser => {
-				fetch(urlServiciosIDUser.replace(SERVICIO_IDUSER, currentServicioidUser))
+				fetch(urlServiciosIDUser.replace(SERVICIO_ID, currentServicioidUser))
 					.then(respuesta => respuesta.json())
 					.then(data => {
-						setStore({ serviciosIdUser: data.Servicio });
+						setStore({ serviciosIdUser: data.Servicios === undefined ? [] : data.Servicios });
 					});
 			},
+
 			getServiciosIDCategoria: currentServicioidCategoria => {
 				fetch(urlServiciosCategoriaId.replace(SERVICIO_CATEGORIA, currentServicioidCategoria))
 					.then(respuesta => respuesta.json())
 					.then(data => {
-						setStore({ serviciosCategoria: data.Servicio });
+						setStore({ serviciosCategoria: data.Servicios === undefined ? [] : data.Servicios });
 					});
 			},
 
@@ -185,7 +190,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			fetchEditServicios: async (newEditServicio, currentServicioid, exito, callbackError) => {
-				const actions = getActions();
 				await fetch(urlServiciosID.replace(SERVICIO_ID, currentServicioid), {
 					method: "PUT",
 					body: JSON.stringify(newEditServicio),
@@ -206,7 +210,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			fetchEditServiciosUser: async (newEditServicioUser, currentServicioidUser, exito, callbackError) => {
 				const actions = getActions();
-				await fetch(urlServiciosIDUser.replace(SERVICIO_IDUSER, currentServicioidUser), {
+				await fetch(urlServiciosID.replace(SERVICIO_ID, currentServicioidUser), {
 					method: "PUT",
 					body: JSON.stringify(newEditServicioUser),
 					headers: {
@@ -251,8 +255,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			removeServicio: servicioIndex => {
-				getStore().serviciosId.splice(servicioIndex, 1);
-				setStore({ serviciosId: getStore().serviciosId });
+				getStore().serviciosIdUser.splice(servicioIndex, 1);
+				setStore({ serviciosIdUser: getStore().serviciosIdUser });
 			},
 
 			removeServicioId: servicioIndex => {
