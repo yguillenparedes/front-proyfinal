@@ -83,6 +83,8 @@ export const Login = () => {
 						</Grid>
 					</ValidatorForm>
 				</Container>
+				<br />
+				<br />	
 			</div>
 		);
 	} else {
