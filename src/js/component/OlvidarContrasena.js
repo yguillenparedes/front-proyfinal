@@ -5,12 +5,12 @@ import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 
 export const Olvidarcontrasena = () => (
-	<div className="container text-center mt-5 ">
+	<div className="container text-center my-5 ">
 		<Container>
 			<ValidatorForm>
 				<div ClassName="row">
 					<div ClassName="col">
-						<h1>¿Olvidaste la contraseña?</h1>
+						<h1 className="mb-5">¿Olvidaste la contraseña?</h1>
 					</div>
 				</div>
 				<div className="bg-light pt-5 pb-5">

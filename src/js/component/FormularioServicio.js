@@ -17,6 +17,21 @@ const servicio_id = "SERVICIO_ID";
 const urlServicios = "http://127.0.0.1:5000/servicios/";
 const urlServiciosID = `${urlServicios}${servicio_id}`;
 
+const MESSAGE_ERROR = {
+	title: "Tienes un problema",
+	description: `Tu correo está siendo usado`
+};
+
+const MESSAGE_SUCCESS = {
+	title: "Correcto!",
+	description: `Has sido registrado con éxito!`
+};
+
+const MESSAGE_SUCCESS_EDIT = {
+	title: "Correcto!",
+	description: `Tu Usuario fue modificado!`
+};
+
 export const FormularioServicio = () => {
 	const [nombreServicio, setNombreServicio] = useState("");
 	const [idUsrVende, setIdUsrVende] = useState("");
@@ -25,16 +40,29 @@ export const FormularioServicio = () => {
 	const [txCredenciales, setTxCredenciales] = useState("");
 	const [nombreCategoria, setNombreCategoria] = useState("");
 	const [statusServicio, setStatusServicio] = useState("");
-	const [inDomicilio, setInDomicilio] = React.useState({
-		checkedA: false,
-		checkedB: true
-	});
+	const [inDomicilio, setInDomicilio] = React.useState(false);
 	const [palabrasClave, setPalabrasClave] = useState("");
 	const [foto, setFoto] = useState("");
 
 	const [open, setOpen] = React.useState(false);
-	const { actions } = useContext(Context);
+	const { actions, store } = useContext(Context);
+	const { currentUser, categorias } = store;
 	const [message, setMessage] = useState({});
+
+	const handleChangeFoto = event => {
+		const formData = new FormData();
+		formData.append("file", event.target.files[0]);
+		formData.append("upload_preset", "bz7oymlj");
+
+		const options = {
+			method: "POST",
+			body: formData
+		};
+		return fetch(`https://api.Cloudinary.com/v1_1/proyectofinal4geek/image/upload`, options)
+			.then(res => res.json())
+			.then(res => setFoto(res.secure_url))
+			.catch(err => console.log(err));
+	};
 
 	const handleClose = () => {
 		setOpen(false);
@@ -45,20 +73,18 @@ export const FormularioServicio = () => {
 
 		const payload = {
 			nombreServicio: nombreServicio,
-			idUsrVende: idUsrVende,
+			idUsrVende: currentUser.id,
 			descripcion: descripcion,
 			fePublicacion: fePublicacion,
 			txCredenciales: txCredenciales,
-			nombreCategoria: nombreCategoria,
 			statusServicio: statusServicio,
 			palabrasClave: palabrasClave,
 			foto: foto,
 			inDomicilio: inDomicilio,
-
-			idCategoria: 1
+			idCategoria: nombreCategoria
 		};
 
-		if (currentServicio === null || currentServicio === undefined) actions.fetchNewUsuario(payload, exito, error);
+		if (currentServicio === null || currentServicio === undefined) actions.fetchNewServicio(payload, exito, error);
 		else actions.fetchEditServiciosUser(payload, currentServicio, exitoEditUsuario, error);
 	};
 
@@ -78,19 +104,21 @@ export const FormularioServicio = () => {
 	};
 
 	const getCurrentServicio = currentServicio => {
-		const url = urlServicios.replace(urlServiciosID, currentServicio);
+		const url = urlServiciosID.replace(servicio_id, currentServicio);
 		fetch(url)
 			.then(respuesta => respuesta.json())
 			.then(data => {
-				setNombreServicio(data.nombreServicio);
-				setIdUsrVende(data.idUsrVende);
-				setNombreCategoria(data.setNombreCategoria);
-				setFoto(data.foto);
-				setTxCredenciales(data.txCredenciales);
-				setFePublicacion(data.fePublicacion);
-				setStatusServicio(data.statusServicio);
-				setPalabrasClave(data.palabrasClave);
-				setDescripcion(data.descripcion);
+				let currentServicio = data.servicio;
+				setNombreServicio(currentServicio.nombreServicio);
+				setIdUsrVende(currentServicio.idUsrVende);
+				setNombreCategoria(currentServicio.nombreCategoria);
+				setFoto(currentServicio.foto);
+				setTxCredenciales(currentServicio.txCredenciales);
+				setFePublicacion(currentServicio.fePublicacion);
+				setStatusServicio(currentServicio.statusServicio);
+				setPalabrasClave(currentServicio.palabrasClave);
+				setDescripcion(currentServicio.descripcion);
+				setInDomicilio(currentServicio.inDomicilio);
 			});
 	};
 
@@ -100,23 +128,8 @@ export const FormularioServicio = () => {
 		if (currentServicio !== null && currentServicio !== undefined) getCurrentServicio(currentServicio);
 	}, []);
 
-	const handleChangeFoto = event => {
-		const formData = new FormData();
-		formData.append("file", event.target.files[0]);
-		formData.append("upload_preset", "bz7oymlj");
-
-		const options = {
-			method: "POST",
-			body: formData
-		};
-		return fetch(`https://api.Cloudinary.com/v1_1/proyectofinal4geek/image/upload`, options)
-			.then(res => res.json())
-			.then(res => setFoto(res.secure_url))
-			.catch(err => console.log(err));
-	};
-
 	const handleChange = event => {
-		setInDomicilio({ ...inDomicilio, [event.target.name]: event.target.checked });
+		setInDomicilio(event.target.checked);
 	};
 
 	return (
@@ -129,26 +142,8 @@ export const FormularioServicio = () => {
 							<h1>Formulario de Registro de Servicios</h1>
 						</div>
 					</div>
-					<div className="bg-light pt-5 pb-5">
-						<div className="forms row col-12 ">
-							<div className="col-6">
-								<a>Nombre Servicio</a>
-							</div>
-							<div className="col-6 mb-3">
-								<TextValidator
-									fullWidth
-									margin="normal"
-									label="Nombre de servicio"
-									id="outlined-size-normal"
-									variant="outlined"
-									value={nombreServicio}
-									onChange={event => setNombreServicio(event.target.value)}
-									validators={["required"]}
-									errorMessages={["this field is required"]}
-								/>
-							</div>
-						</div>
 
+					<div className="bg-light pt-5 pb-5">
 						<div className="forms row col-12">
 							<div className="col-6">
 								<a>Nombre Categoria</a>
@@ -168,11 +163,39 @@ export const FormularioServicio = () => {
 									onChange={event => setNombreCategoria(event.target.value)}
 									validators={["required"]}
 									errorMessages={["this field is required"]}>
-									<option aria-label="None" value="" />
-									<option value={11}>Academia</option>
-									<option value={12}>Ingenieria</option>
-									<option value={13}>Asistencia Virtual</option>
+									<>
+										<option disabled value="">
+											Seleccione una opcion
+										</option>
+
+										{categorias.map((currentCategory, index) => {
+											return (
+												<option key={index} value={currentCategory.id}>
+													{currentCategory.nombreCategoria}
+												</option>
+											);
+										})}
+									</>
 								</Select>
+							</div>
+						</div>
+
+						<div className="forms row col-12 ">
+							<div className="col-6">
+								<a>Nombre Servicio</a>
+							</div>
+							<div className="col-6 mb-3">
+								<TextValidator
+									fullWidth
+									margin="normal"
+									label="Nombre de servicio"
+									id="outlined-size-normal"
+									variant="outlined"
+									value={nombreServicio}
+									onChange={event => setNombreServicio(event.target.value)}
+									validators={["required"]}
+									errorMessages={["this field is required"]}
+								/>
 							</div>
 						</div>
 
@@ -224,24 +247,13 @@ export const FormularioServicio = () => {
 									<FormControlLabel
 										control={
 											<Checkbox
-												checked={inDomicilio.checkedB}
+												checked={inDomicilio}
 												onChange={handleChange}
 												name="checkedB"
 												color="primary"
 											/>
 										}
 										label="Sí"
-									/>
-									<FormControlLabel
-										control={
-											<Checkbox
-												checked={inDomicilio.checkedA}
-												onChange={handleChange}
-												name="checkedA"
-												color="primary"
-											/>
-										}
-										label="No"
 									/>
 								</FormGroup>
 							</div>
@@ -286,7 +298,9 @@ export const FormularioServicio = () => {
 									onChange={event => setStatusServicio(event.target.value)}
 									validators={["required"]}
 									errorMessages={["this field is required"]}>
-									<option aria-label="None" value="" />
+									<option disabled value="">
+										Seleccione una opcion
+									</option>
 									<option value={1}>Activo</option>
 									<option value={2}>Inactivo</option>
 								</Select>

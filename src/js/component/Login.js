@@ -11,17 +11,16 @@ import { Redirect } from "react-router-dom";
 
 export const Login = () => {
 	const { store, actions } = useContext(Context);
-	const { usuarios, currentUser } = store;
-	const [email, setEmail] = useState("");
+	const { currentUser } = store;
+	const [userName, setUserName] = useState("");
 	const [password, setPassword] = useState("");
 
-	const login = () => {
-		let user = usuarios.find(user => user.correoUsr === email);
-		if (user !== null) {
-			actions.setCurrentUser(user);
-			localStorage.setItem("currentUser", JSON.stringify(user));
-			window.location.replace("/");
-		}
+	const login = async () => {
+		const payload = {
+			logUsr: userName,
+			claveUsr: password
+		};
+		await actions.getCurrentUser(payload);
 	};
 
 	if (currentUser === null) {
@@ -37,15 +36,14 @@ export const Login = () => {
 							margin="normal"
 							required
 							fullWidth
-							id="email"
-							label="Correo Electronico"
-							name="email"
-							autoComplete="email"
+							id="userName"
+							label="Nombre de usuario"
+							name="userName"
 							autoFocus
-							onChange={event => setEmail(event.target.value)}
-							validators={["required", "isEmail"]}
-							errorMessages={["this field is required", "Email no valido"]}
-							value={email}
+							onChange={event => setUserName(event.target.value)}
+							validators={["required"]}
+							errorMessages={["this field is required"]}
+							value={userName}
 						/>
 
 						<TextValidator
@@ -70,7 +68,7 @@ export const Login = () => {
 
 						<Grid container>
 							<Grid item xs>
-								<Link href="#" variant="body2">
+								<Link href="/contrasenaolvidada" variant="body2">
 									¿Olvidaste la contraseña?
 								</Link>
 							</Grid>
