@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
 import "../../styles/home.scss";
 import queryString from "query-string";
 import Modal from "./Modall";
@@ -12,22 +11,13 @@ import SaveIcon from "@material-ui/icons/Save";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormGroup from "@material-ui/core/FormGroup";
+import Select from "@material-ui/core/Select";
 
 const servicio_id = "SERVICIO_ID";
 const urlServicios = "http://127.0.0.1:5000/servicios/";
 const urlServiciosID = `${urlServicios}${servicio_id}`;
 
-const useStyles = makeStyles(theme => ({
-	root: {
-		"& .MuiTextField-root": {
-			margin: theme.spacing(1),
-			width: "25ch"
-		}
-	}
-}));
-
 export const FormularioServicio = () => {
-	const classes = useStyles();
 	const [nombreServicio, setNombreServicio] = useState("");
 	const [idUsrVende, setIdUsrVende] = useState("");
 	const [fePublicacion, setFePublicacion] = useState("");
@@ -88,7 +78,7 @@ export const FormularioServicio = () => {
 	};
 
 	const getCurrentServicio = currentServicio => {
-		const url = urlContact.replace(urlServiciosID, currentServicio);
+		const url = urlServicios.replace(urlServiciosID, currentServicio);
 		fetch(url)
 			.then(respuesta => respuesta.json())
 			.then(data => {
@@ -99,7 +89,7 @@ export const FormularioServicio = () => {
 				setTxCredenciales(data.txCredenciales);
 				setFePublicacion(data.fePublicacion);
 				setStatusServicio(data.statusServicio);
-				palabrasClave(data.palabrasClave);
+				setPalabrasClave(data.palabrasClave);
 				setDescripcion(data.descripcion);
 			});
 	};
@@ -164,18 +154,25 @@ export const FormularioServicio = () => {
 								<a>Nombre Categoria</a>
 							</div>
 							<div className="col-6 mb-3">
-								<TextValidator
+								<Select
 									fullWidth
 									margin="normal"
-									label="Nombre Categoria"
-									id="outlined-size-normal"
+									native
+									label="Categoria"
+									inputProps={{
+										nombreCategoria: "nombreCategoria",
+										id: "outlined-age-native-simple"
+									}}
 									variant="outlined"
 									value={nombreCategoria}
 									onChange={event => setNombreCategoria(event.target.value)}
 									validators={["required"]}
-									errorMessages={["this field is required"]}
-									helperText="Hogar, Diseño, Arquitectura, Ingenieria, Academia, Asistencia Virtual"
-								/>
+									errorMessages={["this field is required"]}>
+									<option aria-label="None" value="" />
+									<option value={11}>Academia</option>
+									<option value={12}>Ingenieria</option>
+									<option value={13}>Asistencia Virtual</option>
+								</Select>
 							</div>
 						</div>
 
@@ -194,7 +191,6 @@ export const FormularioServicio = () => {
 									value={descripcion}
 									onChange={event => setDescripcion(event.target.value)}
 									validators={["required"]}
-									helperText="Breve reseña"
 									errorMessages={["this field is required"]}
 								/>
 							</div>
@@ -221,7 +217,7 @@ export const FormularioServicio = () => {
 
 						<div className="forms row col-12">
 							<div className="col-6">
-								<a>En domicilio</a>
+								<a>En Domicilio</a>
 							</div>
 							<div className="col-6 mb-3">
 								<FormGroup row>
@@ -275,21 +271,25 @@ export const FormularioServicio = () => {
 							<div className="col-6">
 								<a>Estado de servicio</a>
 							</div>
-
 							<div className="col-6 mb-3">
-								<TextValidator
+								<Select
 									fullWidth
 									margin="normal"
 									label="Estado de servicio"
-									id="outlined-size-normal"
+									inputProps={{
+										statusServicio: "statusServicio",
+										id: "outlined-age-native-simple"
+									}}
 									type="text"
 									variant="outlined"
 									value={statusServicio}
 									onChange={event => setStatusServicio(event.target.value)}
 									validators={["required"]}
-									errorMessages={["this field is required"]}
-									helperText=" 1- Activo 2- inactivo...."
-								/>
+									errorMessages={["this field is required"]}>
+									<option aria-label="None" value="" />
+									<option value={1}>Activo</option>
+									<option value={2}>Inactivo</option>
+								</Select>
 							</div>
 						</div>
 
